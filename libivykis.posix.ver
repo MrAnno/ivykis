@@ -105,6 +105,9 @@ IVYKIS_0.33 {
 } IVYKIS_0.30;
 
 IVYKIS_0.40 {
+	# iv_thread
+	iv_thread_set_name;
+
 	# iv_tid
 	iv_get_thread_id;
 

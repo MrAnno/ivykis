@@ -87,6 +87,14 @@ static inline void *pthr_getspecific(pthr_key_t *key)
 	return (void *)key->ptr;
 }
 
+static inline unsigned long pthr_id(void)
+{
+	if (pthreads_available())
+		return (unsigned long)pthread_self();
+
+	return getpid();
+}
+
 static inline int pthr_join(pthread_t thread, void **retval)
 {
 	if (pthreads_available())
@@ -105,12 +113,12 @@ static inline int pthr_key_create(pthr_key_t *key, void (*destructor)(void*))
 	return 0;
 }
 
-static inline unsigned long pthr_self(void)
+static inline pthread_t pthr_self(void)
 {
 	if (pthreads_available())
-		return (unsigned long)pthread_self();
+		return pthread_self();
 
-	return getpid();
+	return (pthread_t)NULL;
 }
 
 static inline int pthr_setspecific(pthr_key_t *key, const void *value)
