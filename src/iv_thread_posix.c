@@ -32,6 +32,8 @@
 #pragma weak __pthread_unregister_cancel
 #pragma weak _pthread_cleanup_pop
 #pragma weak _pthread_cleanup_push
+#pragma weak pthread_cleanup_pop
+#pragma weak pthread_cleanup_push
 #endif
 
 
