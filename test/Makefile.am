@@ -1,7 +1,9 @@
-AM_CPPFLAGS		= -D_GNU_SOURCE -I$(top_srcdir)/src/include	\
-			  -I$(top_builddir)/src/include
+AM_CPPFLAGS		= -D_GNU_SOURCE				\
+			  -I$(top_srcdir)/../src/include	\
+			  -I$(top_builddir)/..			\
+			  -I$(top_builddir)/../src/include
 
-LDADD			= $(top_builddir)/src/libivykis.la
+LDADD			= $(top_builddir)/../src/libivykis.la
 
 PROGS			= iv_event_bench_timer		\
 			  iv_event_raw_bench_timer	\
@@ -73,23 +75,20 @@ timer_fairness_SOURCES		= timer_fairness.c
 timer_order_SOURCES		= timer_order.c
 timer_past_SOURCES		= timer_past.c
 
-iv_event_bench_signal_CPPFLAGS	= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include -DUSE_SIGNAL
+iv_event_bench_signal_CPPFLAGS	= $(AM_CPPFLAGS) -DUSE_SIGNAL
 iv_event_bench_signal_SOURCES	= iv_event_bench.c
 
-iv_event_bench_timer_CPPFLAGS	= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include
 iv_event_bench_timer_SOURCES	= iv_event_bench.c
 
-iv_event_raw_bench_signal_CPPFLAGS	= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include -DUSE_SIGNAL
+iv_event_raw_bench_signal_CPPFLAGS	= $(AM_CPPFLAGS) -DUSE_SIGNAL
 iv_event_raw_bench_signal_SOURCES	= iv_event_raw_bench.c
 
-iv_event_raw_bench_timer_CPPFLAGS	= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include
 iv_event_raw_bench_timer_SOURCES	= iv_event_raw_bench.c
 
-iv_signal_bench_signal_CPPFLAGS		= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include -DUSE_SIGNAL
+iv_signal_bench_signal_CPPFLAGS		= $(AM_CPPFLAGS) -DUSE_SIGNAL
 iv_signal_bench_signal_SOURCES		= iv_signal_bench.c
 
-iv_signal_bench_timer_CPPFLAGS		= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include
 iv_signal_bench_timer_SOURCES		= iv_signal_bench.c
 
-server_thread_CPPFLAGS	= -D_GNU_SOURCE -I$(top_srcdir)/src/include -I$(top_builddir)/src/include -DTHREAD
+server_thread_CPPFLAGS	= $(AM_CPPFLAGS) -DTHREAD
 server_thread_SOURCES	= server.c

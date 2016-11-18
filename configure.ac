@@ -1,6 +1,7 @@
 AC_PREREQ(2.59)
 AC_INIT([ivykis], [0.40], [libivykis-discuss@lists.sourceforge.net])
 AC_CONFIG_SRCDIR([src/iv_avl.c])
+AC_CONFIG_SUBDIRS([test])
 AC_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([foreign])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
@@ -370,6 +371,5 @@ AC_CONFIG_FILES([Makefile			\
 		 misc/Makefile			\
 		 misc/ivykis.pc			\
 		 src/Makefile			\
-		 src/include/iv.h		\
-		 test/Makefile])
+		 src/include/iv.h])
 AC_OUTPUT
