@@ -1,0 +1,16 @@
+language: c
+
+os:
+  - osx
+
+compiler:
+  - clang
+
+before_script:
+  - autoreconf -iv
+  - mkdir build
+  - cd build
+  - ../configure
+
+script:
+  - make
