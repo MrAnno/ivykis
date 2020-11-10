@@ -1,0 +1,25 @@
+name: macOS
+
+on: [pull_request, push]
+
+jobs:
+  test:
+    runs-on: macos-11.0
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          brew update --preinstall
+          brew bundle --file=.github/workflows/Brewfile
+
+      - name: Compile
+        run: |
+          autoreconf -iv
+          ./configure
+          make
+
+      - name: Test
+        run: |
+          make check
